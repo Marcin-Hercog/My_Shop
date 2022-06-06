@@ -29,7 +29,7 @@ namespace MyShop
         {
             modelBuilder.Entity<Address>(eb =>
             {
-                //With EntityTypeBuilder i can configurate properties of the Adress class
+                //With EntityTypeBuilder i can configurate properties of the class Address
                 eb.Property(adress => adress.Cntry).IsRequired().HasColumnName("Country");
                 eb.Property(adress => adress.Street).IsRequired();
                 eb.Property(adress => adress.City).IsRequired();
@@ -48,6 +48,16 @@ namespace MyShop
                 eb.Property(p => p.Name).IsRequired();
                 eb.Property(p => p.Prize).IsRequired();
             });
+
+            //here I configurate relation one to one
+            //using Fluent API
+            modelBuilder.Entity<User>()
+            //HasOne - class User has one reference to class Address
+                .HasOne(u => u.Address)
+            //WithOne - class Adress has one reference to class User
+                .WithOne(a => a.User)
+            //set primary key to UserId in class Address
+                .HasForeignKey<Address>(a => a.UserID);
         }
     }
 }
