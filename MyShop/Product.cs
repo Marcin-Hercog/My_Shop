@@ -11,5 +11,9 @@ namespace MyShop
         public int Id { get; set; }
         public string Name { get; set; }
         public int Prize { get; set; }
+        public User User { get; set; }
+        public int UserID { get; set; }
+        public Category Category { get; set; }
+        public int CategoryID { get; set; }
     }
 }

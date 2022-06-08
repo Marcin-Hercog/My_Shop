@@ -41,6 +41,12 @@ namespace MyShop
                 eb.Property(u => u.Name).IsRequired();
                 eb.Property(u => u.LastName).IsRequired();
                 eb.Property(u => u.Email).IsRequired();
+                //HasOne - class User has one reference to class Address
+                eb.HasOne(u => u.Address)
+                //WithOne - class Adress has one reference to class User
+                .WithOne(a => a.User)
+                //set primary key to UserId in class Address
+                .HasForeignKey<Address>(a => a.UserID);
             });
 
             modelBuilder.Entity<Product>(eb =>
@@ -48,16 +54,16 @@ namespace MyShop
                 eb.Property(p => p.Name).IsRequired();
                 eb.Property(p => p.Prize).IsRequired();
             });
-
-            //here I configurate relation one to one
-            //using Fluent API
-            modelBuilder.Entity<User>()
-            //HasOne - class User has one reference to class Address
-                .HasOne(u => u.Address)
-            //WithOne - class Adress has one reference to class User
-                .WithOne(a => a.User)
-            //set primary key to UserId in class Address
-                .HasForeignKey<Address>(a => a.UserID);
+            
+            //configurate relation one to many
+            modelBuilder.Entity<Category>(eb =>
+            {
+                //category has many rerferences to products
+                eb.HasMany(c => c.Products)
+                .WithOne(p => p.Category)
+                .HasForeignKey(p => p.CategoryID);
+            });
+            
         }
     }
 }
