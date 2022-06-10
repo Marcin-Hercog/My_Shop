@@ -13,7 +13,8 @@ namespace MyShop
         public string LastName { get; set; }
         public string Email { get; set; }
         public Address Address { get; set;  }
-        
-        
+        public List<ProductUser> ProductUsers { get; set; } = new List<ProductUser>();
+
+
     }
 }

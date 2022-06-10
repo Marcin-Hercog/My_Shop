@@ -15,5 +15,6 @@ namespace MyShop
         public int UserID { get; set; }
         public Category Category { get; set; }
         public int CategoryID { get; set; }
+        public List<ProductUser> ProductUsers { get; set; } = new List<ProductUser>();
     }
 }

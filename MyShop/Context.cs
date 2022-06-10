@@ -63,6 +63,12 @@ namespace MyShop
                 .WithOne(p => p.Category)
                 .HasForeignKey(p => p.CategoryID);
             });
+
+            modelBuilder.Entity<ProductUser>(eb => 
+            {
+                //primary (compound) key
+                eb.HasKey(pu => new { pu.UserID, pu.ProductID });
+            });
             
         }
     }
