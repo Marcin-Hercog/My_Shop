@@ -15,12 +15,13 @@ namespace MyShop
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<ProductUser> ProductUsers { get; set; }
 
         //our connection to local db
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)" +
-                "\\mssqllocaldb;Datebase=EFUDemyDB;Trusted_Connection=True;");
+                "\\mssqllocaldb;Database=MyShopDB;Trusted_Connection=True;");
         }
 
         //using Fluent API here
@@ -53,6 +54,7 @@ namespace MyShop
             {
                 eb.Property(p => p.Name).IsRequired();
                 eb.Property(p => p.Prize).IsRequired();
+                //eb.HasMany(p => p.Users).WithMany(u => u.Products);
             });
             
             //configurate relation one to many
@@ -61,15 +63,16 @@ namespace MyShop
                 //category has many rerferences to products
                 eb.HasMany(c => c.Products)
                 .WithOne(p => p.Category)
-                .HasForeignKey(p => p.CategoryID);
+                .HasForeignKey(p => p.CategoryId);
             });
 
-            modelBuilder.Entity<ProductUser>(eb => 
-            {
+            //modelBuilder.Entity<ProductUser>()
+                
                 //primary (compound) key
-                eb.HasKey(pu => new { pu.UserID, pu.ProductID });
-            });
-            
+                //.HasKey(pu => new { pu.UserId, pu.ProductId });
+                
+                
+                
         }
     }
 }

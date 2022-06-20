@@ -12,9 +12,10 @@ namespace MyShop
         public string Name { get; set; }
         public int Prize { get; set; }
         public User User { get; set; }
-        public int UserID { get; set; }
+        public int UserId { get; set; }
         public Category Category { get; set; }
-        public int CategoryID { get; set; }
-        public List<ProductUser> ProductUsers { get; set; } = new List<ProductUser>();
+        public int CategoryId { get; set; }
+        //public ICollection<User> Users { get; } = new List<User>();
+        public List<ProductUser> ProductUsers { get; set; }
     }
 }
