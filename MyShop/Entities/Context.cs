@@ -81,7 +81,21 @@ namespace MyShop
                 new Address { Id = 3, Cntry = "Poland", City = "Siemianowice Śląskie", Street = "Szeroka", PostalCode = "43-900", UserID = 3 },
                 new Address { Id = 4, Cntry = "Poland", City = "Katowice", Street = "Wąska", PostalCode = "44-880", UserID = 4 });
 
+            modelBuilder.Entity<Category>()
+                .HasData(new Category { Id = 1, Name = "AGD", },
+                new Category { Id = 2, Name = "Computers" },
+                new Category { Id = 3, Name = "Headphones" },
+                new Category { Id = 4, Name = "Smartphones" });
 
+            modelBuilder.Entity<Product>()
+                .HasData(new Product { Id = 1, Name = "Hair dryer", Prize = 100, CategoryId = 1, UserId = 1 },
+                new Product { Id = 2, Name = "Gaming laptop", Prize = 3000, CategoryId = 2, UserId = 1 },
+                new Product { Id = 3, Name = "Notebook", Prize = 2000, CategoryId = 2, UserId = 2 },
+                new Product { Id = 4, Name = "Wash mashine", Prize = 1500, CategoryId = 1, UserId = 2 },
+                new Product { Id = 5, Name = "Bose Headphones ", Prize = 1000, CategoryId = 3, UserId = 3 },
+                new Product { Id = 6, Name = "Oppo Reno", Prize = 4000, CategoryId = 4, UserId = 3 },
+                new Product { Id = 7, Name = "Iphone X", Prize = 5000, CategoryId = 4, UserId = 4 },
+                new Product { Id = 8, Name = "Edifier TWS", Prize = 300, CategoryId = 3, UserId = 4 });
             //modelBuilder.Entity<ProductUser>()
             //primary (compound) key
             //.HasKey(pu => new { pu.UserId, pu.ProductId });
