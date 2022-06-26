@@ -9,7 +9,7 @@ namespace MyShop
 {
     //this class represents all database
     //add tables(classes) in database
-    class Context : DbContext
+    public class Context : DbContext
     {
         public DbSet<Address> Adresses { get; set; }
         public DbSet<Category> Categories { get; set; }
