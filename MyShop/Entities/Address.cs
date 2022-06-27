@@ -21,5 +21,6 @@ namespace MyShop
         //this will be foreign key
         //type of this key have to be like ID in class User
         public int UserID { get; set; }
+        
     }
 }
