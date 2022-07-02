@@ -77,6 +77,86 @@ namespace MyShop
             }
             
         }
+        //static void AddProducts()
+        //{
+
+        //    Product newProduct = new Product();
+        //    Console.WriteLine("Type name of product:");
+        //    newProduct.Name = Console.ReadLine();
+        //    Console.WriteLine("Type prize:");           
+        //    try
+        //    {
+        //        newProduct.Prize = int.Parse(Console.ReadLine());
+        //    }
+        //    catch (FormatException)
+        //    {               
+        //        Console.WriteLine("Wrong format of data! Type again:");
+        //        newProduct.Prize = int.Parse(Console.ReadLine());
+        //    }
+
+        //    using (var result = new Context())
+        //    {
+        //        result.Attach<Product>(newProduct);
+        //        result.SaveChanges();
+        //    }
+        //    Console.WriteLine("Do you want add ID of user? Type yes or no:");
+        //    string userChoice = Console.ReadLine();
+        //    if (userChoice == "yes")
+        //    {
+        //        Console.WriteLine("Type ID of user:");
+        //        newProduct.UserId = byte.Parse(Console.ReadLine());
+        //        ShowProducts();
+        //    }
+        //    else
+        //    {
+        //        ShowProducts();
+        //    }
+        //}
+        static void AddCategories()
+        {
+            Category newCategory = new Category();
+            Console.WriteLine("Type name of category:");
+            newCategory.Name = Console.ReadLine();
+
+            using (var result = new Context())
+            {
+                result.Attach<Category>(newCategory);
+                result.SaveChanges();
+            }
+            ShowCategories();
+        }
+        //static void AddAddresses()
+        //{
+        //    Address newAddress = new Address();
+        //    Console.WriteLine("Type country:");
+        //    newAddress.Cntry = Console.ReadLine();
+        //    Console.WriteLine("Type City:");
+        //    newAddress.City = Console.ReadLine();
+        //    Console.WriteLine("Type street:");
+        //    newAddress.Street = Console.ReadLine();
+        //    Console.WriteLine("Type postal code:");
+        //    newAddress.PostalCode = Console.ReadLine();
+
+        //    using (var result = new Context())
+        //    {
+        //        result.Attach<Address>(newAddress);
+        //        try
+        //        {
+        //            result.SaveChanges();
+        //        }
+        //        catch (Microsoft.EntityFrameworkCore.DbUpdateException)
+        //        {
+        //            Console.WriteLine("You can't add new address becouse you have to" +
+        //                " add user first ");
+        //            AddUsers();
+        //            AddAddresses();
+        //            result.SaveChanges();
+        //        }
+                
+        //    }
+        //    ShowAddresses();
+        //}
+        
         static void Main(string[] args)
         {
 
@@ -108,6 +188,12 @@ namespace MyShop
                 {                   
                     ShowProducts();
                 }
+                else if (userAction == "Add")
+                {
+                    
+                    //AddProducts();
+                }
+
             }
             else if (userChoice == "Category")
             {
@@ -117,6 +203,10 @@ namespace MyShop
                 {
                     ShowCategories();
                 }
+                else if (userAction == "Add")
+                {
+                    AddCategories();
+                }
             }
             else if (userChoice == "Address")
             {
@@ -125,6 +215,10 @@ namespace MyShop
                 if (userAction == "Show")
                 {
                     ShowAddresses();
+                }
+                else if(userAction == "Add")
+                {
+                    //AddAddresses();
                 }
             }
             else
