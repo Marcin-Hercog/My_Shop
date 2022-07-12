@@ -39,15 +39,15 @@ namespace MyShop
             }
             Show.ShowCategories();
         }
-        public static void Return()
+        static void Return()
         {
             Welcome welcome = new Welcome();
             welcome.UserWelcome();
-        }
+        }      
         public void UserWelcome()
         {
-            Console.WriteLine("Hi! This is app thus you can manage database.\n" +
-                "Which catalogue do you want change? Please type one of below:\nUser, Product, Category or Address");
+            Console.WriteLine("Hi! This is an app with which you can manage the database.\n" +
+                "Which catalogue do you want to choose? Please type one of given below:\nUser, Product, Category or Address");
 
             string[] catalogue = { "User", "Product", "Category", "Address" };
             string[] actions = { "User", "Product", "Category", "Address" };
@@ -63,29 +63,39 @@ namespace MyShop
                 if (userAction == "Show")
                 {
                     Show.ShowUsers();
+                    Return();
                 }
                 else if (userAction == "Add")
                 {
                     AddUsers();
+                    Return();
                 }
                 else if (userAction == "Back")
                 {
                     Return();
                 }
+                else if (userAction == "Delete")
+                {
+                    Show.ShowUsers();
+                    Delete.DeleteUser();
+                    Show.ShowUsers();
+                    Return();
+                }
                 else
                 {
-                    Console.WriteLine("You typed wrong data command. Please type action below:\nAdd, Update, Delete, Show or Back");
-                    string chooseAgain = Console.ReadLine();
+                    Console.WriteLine("You typed a wrong command.");
+                    Return();
                 }
             }
             else if (userChoice == "Product")
             {
                 Console.WriteLine("You're in catalogue Product\nWhat do you want to do? " +
-                    "Please type option below:\nAdd, Update, Delete, Show or Back");
+                    "Please type action below:\nAdd, Update, Delete, Show or Back");
                 string userAction = Console.ReadLine();
                 if (userAction == "Show")
                 {
                     Show.ShowProducts();
+                    Return();
                 }
                 else if (userAction == "Add")
                 {
@@ -96,34 +106,60 @@ namespace MyShop
                 {
                     Return();
                 }
-
+                else if (userAction == "Delete")
+                {
+                    Show.ShowProducts();
+                    Delete.DeleteProduct();
+                    Show.ShowProducts();
+                    Return();
+                }
+                else
+                {
+                    Console.WriteLine("You typed a wrong command.");
+                    Return();
+                }
             }
             else if (userChoice == "Category")
             {
                 Console.WriteLine("You're in catalogue Category\nWhat do you want to do? " +
-                    "Please type option below:\nAdd, Update, Delete, Show or Back");
+                    "Please type action below:\nAdd, Update, Delete, Show or Back");
                 string userAction = Console.ReadLine();
                 if (userAction == "Show")
                 {
                     Show.ShowCategories();
+                    Return();
                 }
                 else if (userAction == "Add")
                 {
                     AddCategories();
+                    Return();
                 }
                 else if (userAction == "Back")
                 {
+                    Return();
+                }
+                else if (userAction == "Delete")
+                {
+                    Show.ShowCategories();
+                    Delete.DeleteCategory();
+                    Show.ShowCategories();
+                    Return();
+                }
+                else
+                {
+                    Console.WriteLine("You typed a wrong command.");
                     Return();
                 }
             }
             else if (userChoice == "Address")
             {
                 Console.WriteLine("You're in catalogue Address\nWhat do you want to do? " +
-                    "Please type option below:\nAdd, Update, Delete, Show or Back");
+                    "Please type action below:\nAdd, Update, Delete, Show or Back");
                 string userAction = Console.ReadLine();
                 if (userAction == "Show")
                 {
                     Show.ShowAddresses();
+                    Return();
                 }
                 else if (userAction == "Add")
                 {
@@ -131,6 +167,18 @@ namespace MyShop
                 }
                 else if (userAction == "Back")
                 {
+                    Return();
+                }
+                else if (userAction == "Delete")
+                {
+                    Show.ShowAddresses();
+                    Delete.DeleteAddress();
+                    Show.ShowAddresses();
+                    Return();
+                }
+                else
+                {
+                    Console.WriteLine("You typed a wrong command.");
                     Return();
                 }
             }
