@@ -8,52 +8,12 @@ namespace MyShop
 {
     public class Welcome
     {
-        static void AddUsers()
-        {
-
-            User newUser = new User();
-            Console.WriteLine("Type name:");
-            newUser.Name = Console.ReadLine();
-            Console.WriteLine("Type last name:");
-            newUser.LastName = Console.ReadLine();
-            Console.WriteLine("Type email:");
-            newUser.Email = Console.ReadLine();
-
-            using (var result = new Context())
-            {
-                result.Attach<User>(newUser);
-                result.SaveChanges();
-            }
-
-        }
-        static void AddCategories()
-        {
-            Category newCategory = new Category();
-            Console.WriteLine("Type name of category:");
-            newCategory.Name = Console.ReadLine();
-
-            using (var result = new Context())
-            {
-                result.Attach<Category>(newCategory);
-                result.SaveChanges();
-            }
-            Show.ShowCategories();
-        }
-        static void Return()
-        {
-            Welcome welcome = new Welcome();
-            welcome.UserWelcome();
-        }      
         public void UserWelcome()
         {
             Console.WriteLine("Hi! This is an app with which you can manage the database.\n" +
                 "Which catalogue do you want to choose? Please type one of given below:\nUser, Product, Category or Address");
-
-            string[] catalogue = { "User", "Product", "Category", "Address" };
-            string[] actions = { "User", "Product", "Category", "Address" };
-            string userChoice = Console.ReadLine();
-
             
+            string userChoice = Console.ReadLine();
 
             if (userChoice == "User")
             {
@@ -63,129 +23,120 @@ namespace MyShop
                 if (userAction == "Show")
                 {
                     Show.ShowUsers();
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
                 else if (userAction == "Add")
                 {
-                    AddUsers();
-                    Return();
+                    Add.AddUsers();
+                    Return.ReturnToMainMenu();
                 }
                 else if (userAction == "Back")
                 {
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
                 else if (userAction == "Delete")
                 {
                     Show.ShowUsers();
                     Delete.DeleteUser();
                     Show.ShowUsers();
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
                 else
                 {
                     Console.WriteLine("You typed a wrong command.");
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
             }
             else if (userChoice == "Product")
             {
                 Console.WriteLine("You're in catalogue Product\nWhat do you want to do? " +
-                    "Please type action below:\nAdd, Update, Delete, Show or Back");
+                    "Please type action below:\nDelete, Show or Back");
                 string userAction = Console.ReadLine();
                 if (userAction == "Show")
                 {
                     Show.ShowProducts();
-                    Return();
-                }
-                else if (userAction == "Add")
-                {
-
-                    //AddProducts();
+                    Return.ReturnToMainMenu();
                 }
                 else if (userAction == "Back")
                 {
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
                 else if (userAction == "Delete")
                 {
                     Show.ShowProducts();
                     Delete.DeleteProduct();
                     Show.ShowProducts();
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
                 else
                 {
                     Console.WriteLine("You typed a wrong command.");
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
             }
             else if (userChoice == "Category")
             {
                 Console.WriteLine("You're in catalogue Category\nWhat do you want to do? " +
-                    "Please type action below:\nAdd, Update, Delete, Show or Back");
+                    "Please type action below:\nAdd, Delete, Show or Back");
                 string userAction = Console.ReadLine();
                 if (userAction == "Show")
                 {
                     Show.ShowCategories();
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
                 else if (userAction == "Add")
                 {
-                    AddCategories();
-                    Return();
+                    Add.AddCategories();
+                    Return.ReturnToMainMenu();
                 }
                 else if (userAction == "Back")
                 {
-                    Return();
+                    Return.ReturnToMainMenu(); ;
                 }
                 else if (userAction == "Delete")
                 {
                     Show.ShowCategories();
                     Delete.DeleteCategory();
                     Show.ShowCategories();
-                    Return();
+                    Return.ReturnToMainMenu(); ;
                 }
                 else
                 {
                     Console.WriteLine("You typed a wrong command.");
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
             }
             else if (userChoice == "Address")
             {
                 Console.WriteLine("You're in catalogue Address\nWhat do you want to do? " +
-                    "Please type action below:\nAdd, Update, Delete, Show or Back");
+                    "Please type action below:\nDelete, Show or Back");
                 string userAction = Console.ReadLine();
                 if (userAction == "Show")
                 {
                     Show.ShowAddresses();
-                    Return();
-                }
-                else if (userAction == "Add")
-                {
-                    //AddAddresses();
-                }
+                    Return.ReturnToMainMenu();
+                }                
                 else if (userAction == "Back")
                 {
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
                 else if (userAction == "Delete")
                 {
                     Show.ShowAddresses();
                     Delete.DeleteAddress();
                     Show.ShowAddresses();
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
                 else
                 {
                     Console.WriteLine("You typed a wrong command.");
-                    Return();
+                    Return.ReturnToMainMenu();
                 }
             }
             else
             {
                 Console.WriteLine("Sorry, incorret catalogue");
-                Return();
+                Return.ReturnToMainMenu();
             }
         }
     }
